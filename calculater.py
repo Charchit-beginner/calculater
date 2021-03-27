@@ -18,8 +18,11 @@ class gui(Tk):
                     import tkinter.messagebox as msgbox
                     msgbox.showerror("Wrong Input","Couldn't calculate the answer, Please check your input")
 
-            else:
+            elif val=="C":
                 self.entry.delete(0,END)
+            else:
+                self.entry.delete(len(self.entry.get())-1,len(self.entry.get()))
+
         else:
             self.insert_val(val)
 
@@ -45,15 +48,17 @@ class gui(Tk):
         bcl =  self.make_btn("C",False)
         bdot =  self.make_btn(".")
         beq =  self.make_btn("=",False,17)
+        bback =  self.make_btn("<-",False)
 
         # btn_list = [b{i} for i in range(1,10)]
-        btn_list = [b1,b2,b3,bcl,b4,b5,b6,bm,b7,b8,b9,bd,bdot,b0,bs,bp,beq]
+        btn_list = [b1,b2,b3,bcl,b4,b5,b6,bback,b7,b8,b9,bd,bdot,b0,bs,bm,beq,bp]
         count = 0
         for row in range(1,5):
             for col in range(4):
                 btn_list[count].grid(row=row,column=col)
                 count+=1
-        btn_list[-1].grid(row=5,column=0,columnspan=4)
+        btn_list[-2].grid(row=5,column=0,columnspan=3)
+        btn_list[-1].grid(row=5,column=3)
 
 
 
